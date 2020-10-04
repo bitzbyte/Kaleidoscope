@@ -4,7 +4,7 @@
 UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Darwin)
-SKETCHBOOK_DIR ?= $(HOME)/Documents/Arduino
+SKETCHBOOK_DIR ?= $(HOME)/git
 PACKAGE_DIR ?= $(HOME)/Library/Arduino15
 else
 SKETCHBOOK_DIR ?= $(HOME)/Arduino
@@ -13,7 +13,7 @@ endif
 
 
 ARDUINO_INSTALLED_ENV=$(shell ls -dt $(PACKAGE_DIR)/packages/keyboardio/hardware/avr 2>/dev/null |head -n 1)
-MANUALLY_INSTALLED_ENV=$(shell ls -dt $(SKETCHBOOK_DIR)/hardware/keyboardio/avr 2>/dev/null |head -n 1)
+MANUALLY_INSTALLED_ENV=$(shell ls -dt $(SKETCHBOOK_DIR)/keyboardio/avr 2>/dev/null |head -n 1)
 
 
 
@@ -46,7 +46,7 @@ KALEIDOSCOPE_BUILDER_DIR ?= $(ARDUINO_INSTALLED_ENV)/libraries/Kaleidoscope/bin/
 
 endif
 
-BOARD_HARDWARE_PATH ?= $(SKETCHBOOK_DIR)/hardware
+BOARD_HARDWARE_PATH ?= $(SKETCHBOOK_DIR)
 KALEIDOSCOPE_PLUGIN_MAKEFILE_DIR ?= keyboardio/avr/build-tools/makefiles/
 
 ifneq ("$(wildcard $(BOARD_HARDWARE_PATH)/$(KALEIDOSCOPE_PLUGIN_MAKEFILE_DIR)/rules.mk)","") 
@@ -64,7 +64,7 @@ $(info )
 $(info It is probably the case that you want to move or symlink your git checkout )
 $(info of the Kaleidoscope bundle to the directory: ) 
 $(info )
-$(info   $(SKETCHBOOK_DIR)/hardware/keyboardio )
+$(info   $(SKETCHBOOK_DIR)/keyboardio )
 $(info ****************************************************************************)
 
 
